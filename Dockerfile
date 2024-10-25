@@ -57,7 +57,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
     cargo build --release --features="$FEATURES"
 
-FROM ethpandaops/reth:main as reth
+FROM ethpandaops/reth:ryanschneider-validation-start-c1939ef as reth
 #
 ## Runtime container with both rbuilder and reth + entrypoint script
 ##
@@ -66,7 +66,7 @@ FROM ubuntu:latest AS runtime
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y curl 
+    && apt-get install -y curl
 
 COPY --from=builder /app/target/release/rbuilder /app/rbuilder
 COPY --from=reth /usr/local/bin/reth /app/reth
