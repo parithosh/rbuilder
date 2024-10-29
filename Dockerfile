@@ -57,7 +57,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=$SCCACHE_DIR,sharing=locked \
     cargo build --release --features="$FEATURES"
 
-FROM ethpandaops/reth:ryanschneider-validation-start-c1939ef as reth
+FROM ethpandaops/reth:bbusa-reth-pectra-rbuilder-0eebaa8 as reth
 #
 ## Runtime container with both rbuilder and reth + entrypoint script
 ##
